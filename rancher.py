@@ -428,7 +428,7 @@ class Client(object):
         return self._get(collection_url, data=self._to_dict(**kw))
 
     def reload(self, obj):
-        return self.by_id(obj.type, obj.id)
+        return self.by_id(obj.type.replace(".", "_").replace("-", ""), obj.id)
 
     def create(self, type, *args, **kw):
         collection_url = self.schema.types[type].links.collection
